@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="AppBundle\Repository\email_addressesRepository" name="AppBundle\Entity\email_addresses">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="customerId" type="string" column="customer_id" length="255"/>
+    <field name="emailAdress" type="text" column="email_adress"/>
+    <field name="active" type="string" column="active" length="1"/>
+  </entity>
+</doctrine-mapping>
