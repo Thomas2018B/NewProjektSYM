@@ -31,33 +31,26 @@ class LuckyController extends Controller
         ));
     }
 
-
     /**
      * @Route("/mailsend")
      */
 
     public function ausgabe()
     {
-        ##$product = $this->getDoctrine()
-         ##   ->getRepository(customer::class)
-         ##   ->findOneById('1');
 
-       ## $repository = $this->getDoctrine()->getRepository(customer::class);
-       ## $products = $repository->findAll();
         $entityManager = $this->getDoctrine()->getManager();
         $query = $entityManager->createQuery(
             'SELECT p
-              FROM AppBundle:email_addresses p 
+              FROM AppBundle:email_addresses p
+              JOIN p.customer_id c
               Where p.active = 1'
         );
 
 
-       ## 'SELECT u FROM AppBundle:email_addresses p WHERE u.age > 20'
-
         $products = $query->getResult();
 
 
-        return $this->render('mail.html.twig', array('number' => $products,));
+        return $this->render('test.html.twig', array('number' => $products,));
     }
 
 
@@ -87,7 +80,7 @@ class LuckyController extends Controller
             ->getRepository(email_addresses::class)
             ->findAll();
 
-        $categorys = $product->getResult();
+        $categorys = $product->getCategory();
 
         return $this->render('mail.html.twig', array('number' =>  $categorys,));
     }

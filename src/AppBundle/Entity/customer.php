@@ -109,5 +109,21 @@ class customer
     {
         return $this->gender;
     }
+
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Email_addresses", mappedBy="customer")
+     */
+
+    private $email;
+
+    public function  __construct()
+    {
+        $this->email  = new ArrayCollection();
+    }
+
+
+
 }
 

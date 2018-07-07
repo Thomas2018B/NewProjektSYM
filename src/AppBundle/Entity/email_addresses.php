@@ -109,5 +109,12 @@ class email_addresses
     {
         return $this->active;
     }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Customer", inversedBy="email")
+     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+     */
+    private $customer ;
+
 }
 

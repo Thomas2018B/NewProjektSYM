@@ -11,8 +11,23 @@
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
-mail wurde versendet
-        {{ dump (number) }}
+        Mail mit dem Inhalt :::
 
-    </body>
+<hr>
+        Hello {{ number.firstName }} {{ number.lastName }},
+
+        thank you for using our service. You are a really good customer! You are amazing!
+
+
+        Best regards,
+        customer support
+
+
+        <hr>
+
+
+
+
+        wurde versendet
+
 </html>
