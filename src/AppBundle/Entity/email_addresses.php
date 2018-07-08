@@ -2,6 +2,10 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+
+
 /**
  * email_addresses
  */
@@ -96,13 +100,11 @@ class email_addresses
     public function setActive($active)
     {
         $this->active = $active;
-
         return $this;
     }
 
     /**
      * Get active
-     *
      * @return string
      */
     public function getActive()
@@ -111,10 +113,33 @@ class email_addresses
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="Customer", inversedBy="email")
-     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="customer", inversedBy="mailers")
+     * @ORM\JoinColumn(name="customer_id", referencedColumnName="Id")
      */
-    private $customer ;
+
+    private $customers;
+
+
+    /**
+     * Set customers
+     * @param string $customers
+     * @return customers
+     */
+    public function setcustomers($customers)
+    {
+        $this->customers = $customers;
+        return $this;
+    }
+
+
+    /**
+     * Get customers
+     * @return string
+     */
+    public function getcustomers()
+    {
+        return $this->customers;
+    }
+
 
 }
-

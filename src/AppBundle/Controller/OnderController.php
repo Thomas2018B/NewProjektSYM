@@ -14,45 +14,60 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class OnderController extends Controller
 {
 
-    public $zahl = 'gerd0';
-
-
-
-
-
-    public function Ondermail()
-    {
-        $number = $this->zahl;
-        $blumen = array("Rose", "Tulpe", "Nelke", "Sonnenblume");
-
-        return new Response(
-            '<html><body>Lucky number: ' . $number  . '</body></html>'
-        );
-    }
 
     /**
-     * @Route("/onder", name="homepage")
+     * @Route("/mailsend", name="homepage")
      */
 
-    public function sendEmail( $name= 'werner' , \Swift_Mailer $mailer)
+    public function sendEmail( \Swift_Mailer $mailer)
     {
+        $entityManager = $this->getDoctrine()->getManager();
+        $query = $entityManager->createQuery(
+            'SELECT p FROM AppBundle:customer p ');
+        $custos = $query->getResult();
 
-        $number = $this->zahl;
-        $ziel = array('mail'=> "h.th.leib@gmx.de", 'firstName'=>"Tulpe",'lastName'=> "Nelke");
-        $message = (new \Swift_Message('Hello Email'))
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $query = $entityManager->createQuery(
+            'SELECT r FROM AppBundle:email_addresses r WHERE r.active > 0 ');
+        $prod = $query->getResult();
+       foreach($prod as $ziele) {
+           foreach ($ziele as $key1 => $value1) {
+
+               $arra[$key1] = $value1;
+           }
+
+           ##### host finden  ####
+           foreach($custos as $zeil)
+           {
+               foreach ( $zeil as $key2 => $value2 )
+               {
+                   $customer[$key2] = $value2;
+               }
+
+               if ($arra['customerId'] == $customer['id']) {
+
+########################################################
+
+        $message = (new \Swift_Message('Hello viele Grüße von UNS '))
 
             ->setFrom('wernfriedtest3@gmail.com')
-            ->setTo('h.th.leib@gmx.de')
+            ->setTo($arra['emailAdress'] )
             ->setBody(
-
-                $this->render('mailsend.html.twig', array('customer' =>  $ziel ))
-
+                $this->render('mailsend.html.twig', array('customer' => $customer ))
             )
         ;
-
         $mailer->send($message);
 
-        return $this->render('mail.html.twig', array('number' => $ziel  ,));
+#########################################################
+                   ; }
+           }
+       }
+
+
+
+
+       return $this->render('mail.html.twig');
     }
 
 

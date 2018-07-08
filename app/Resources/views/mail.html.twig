@@ -4,23 +4,29 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Mail versendet {% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-        Mail mit dem Inhalt :::
+       <h1> Mail mit dem Inhalt :</h1>
 
 <hr>
-        Hello {{ number.firstName }} {{ number.lastName }},
+        Hello,<br>
+       <br>
+       <br>
 
-        thank you for using our service. You are a really good customer! You are amazing!
+        thank you for using our service. You are a really good customer! You are amazing!<br>
+       <br>
+       <br>
 
 
-        Best regards,
-        customer support
+        Best regards,<br>
+       <br>
+
+        customer support<br>
+       <br>
+
 
 
         <hr>
@@ -28,6 +34,6 @@
 
 
 
-        wurde versendet
+       <h1>  wurde   versendet </h1>
 
 </html>

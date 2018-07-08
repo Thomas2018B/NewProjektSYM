@@ -3,19 +3,22 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Willkommen {% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+
+
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-        <p> Bitte Versenden sie an alle aktiven Mitglieder einen MAIL </p>
+
+        <h1> Bitte Versenden sie an alle aktiven Mitglieder einen MAIL </h1>
+        <hr>
         <form action="mailsend" method="post">
             <input type="hidden" size="17" name="Inhalt">
             <input type="submit" value="Emails versenden">
-
+<hr>
     </body>
 </html>

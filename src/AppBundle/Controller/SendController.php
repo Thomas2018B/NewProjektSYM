@@ -20,9 +20,7 @@ use AppBundle\Entity\email_addresses;
 class SendController extends Controller
 {
 
-    /**
-     * @Route("/find")
-     */
+
 
 
 
@@ -42,6 +40,29 @@ class SendController extends Controller
         return $this->render('test.html.twig', array('number' => $meine_ergebnis));
     }
 
+
+    public function sendEmail( $meine_ergebnis , \Swift_Mailer $mailer)
+    {
+
+
+        $ziel = array('mail'=> "h.th.leib@gmx.de", 'firstName'=>"Tulpe",'lastName'=> "Nelke");
+
+
+        $message = (new \Swift_Message('Hello Email'))
+
+            ->setFrom('wernfriedtest3@gmail.com')
+            ->setTo('h.th.leib@gmx.de')
+            ->setBody(
+
+                $this->render('mailsend.html.twig', array('customer' =>  $ziel ))
+
+            )
+        ;
+
+        $mailer->send($message);
+
+        return $this->render('mail.html.twig', array('number' => $ziel  ,));
+    }
 
 
 

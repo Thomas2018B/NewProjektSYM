@@ -2,6 +2,10 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+
 /**
  * customer
  */
@@ -88,21 +92,17 @@ class customer
 
     /**
      * Set gender
-     *
      * @param string $gender
-     *
      * @return customer
      */
     public function setGender($gender)
     {
         $this->gender = $gender;
-
         return $this;
     }
 
     /**
      * Get gender
-     *
      * @return string
      */
     public function getGender()
@@ -110,18 +110,36 @@ class customer
         return $this->gender;
     }
 
+    /**
+     * @ORM\OneToMany(targetEntity="email_addresses", mappedBy="customers")
+     */
+    private $mailers;
+    public function __construct()
+    {
+        $this->mailers = new ArrayCollection();
+    }
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Email_addresses", mappedBy="customer")
+     * Set mailers
+     * @param string $mailers
+     * @return customer
      */
-
-    private $email;
-
-    public function  __construct()
+    public function setMailers($mailers)
     {
-        $this->email  = new ArrayCollection();
+        $this->mailers = $mailers;
+        return $this;
     }
+
+    /**
+     * Get mailers
+     * @return string
+     */
+    public function getMailers()
+    {
+        return $this_>mailers;
+    }
+
 
 
 

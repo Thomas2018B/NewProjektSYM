@@ -10,26 +10,4 @@ namespace AppBundle\Repository;
  */
 class customerRepository extends \Doctrine\ORM\EntityRepository
 {
-
-    public function findOneByIdJoinedToEmail_addresses($productId)
-    {
-        $query = $this->getEntityManager($productId)
-            ->createQuery(
-                'SELECT p, c 
-        FROM AppBundle:customer p
-        JOIN p.email_addresses c
-        WHERE p.active = 1'
-            );
-
-        try {
-            return $query->getSingleResult();
-        } catch (\Doctrine\ORM\NoResultException $exception) {
-            return null;
-        }
-    }
-
-
-
-
-
 }
