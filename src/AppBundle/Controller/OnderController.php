@@ -49,7 +49,7 @@ class OnderController extends Controller
 
 ########################################################
 
-        $message = (new \Swift_Message('Hello viele Grüße von UNS '))
+        $message = (new \Swift_Message('Hallo viele Grüße von UNS '))
 
             ->setFrom('wernfriedtest3@gmail.com')
             ->setTo($arra['emailAdress'] )

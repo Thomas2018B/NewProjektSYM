@@ -2,38 +2,28 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
         <meta charset="UTF-8" />
         <title>{% block title %}Mail versendet {% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-       <h1> Mail mit dem Inhalt :</h1>
+</head>
+<body>
 
-<hr>
-        Hello,<br>
-       <br>
-       <br>
+    <h1> Mail mit dem Inhalt :</h1>
+    <hr>
+        <p> Hello, </p>
+        <br>
 
-        thank you for using our service. You are a really good customer! You are amazing!<br>
-       <br>
-       <br>
+    <p>  thank you for using our service. You are a really good customer! You are amazing!</p>
+        <br>
 
+     <p>   Best regards,</p>
+        <br>
 
-        Best regards,<br>
-       <br>
-
-        customer support<br>
-       <br>
-
-
-
-        <hr>
-
-
-
-
+    <p>  customer support</p>
+         <br>
+    <hr>
        <h1>  wurde   versendet </h1>
-
+</body>
 </html>
